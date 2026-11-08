@@ -22,6 +22,18 @@ Following a few simple markup conventions, the process for adding a new test is:
 5. Add the evaluation criteria for the test pass/fail states inside the wrapper. This typically has the form "If [observable or invokable condition], the test passes".      
 6. Add a link to the test in the navigation document (typically xhtml/nav.xhtml). Note that the Navigation Document serves as the self-documenting list of available tests. Each test, regardless of whether it is required or optional, is linked to from the nav doc using the wrapper ID mentioned above.
 
+## Validation
+
+Every book in the suite must pass [EPUBCheck](https://github.com/w3c/epubcheck) without errors, so that
+anyone using the suite as a corpus can tell errors introduced by their own tool from errors already in the
+books. A GitHub Actions workflow checks this on every pull request. To run the same check locally, download
+an EPUBCheck release and run:
+
+    $ util/epubcheck-all.sh path/to/epubcheck.jar
+
+Warnings are reported but do not fail the check: some books deliberately keep deprecated constructs
+because reading systems are tested against them.
+
 ## Download
 
 You can download this project in either [zip](https://github.com/mgylling/epub-testsuite/zipball/master) or [tar formats](https://github.com/mgylling/epub-testsuite/tarball/master).
